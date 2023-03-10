@@ -89,7 +89,17 @@ class Polinomio(object):
             total = Polinomio.obtener_valor(polinomio1, i) + Polinomio.obtener_valor(polinomio2, i)
             if (total != 0):
                 Polinomio.agregar_termino(paux, i, total)
-            return paux
+        return paux
+        
+    def restar(polinomio1, polinomio2):
+        """Resta dos polinomios y devuelve el resultado"""
+        paux = Polinomio()
+        mayor = polinomio1 if (polinomio1.grado > polinomio2.grado) else polinomio2
+        for i in range(0, mayor.grado + 1):
+            total = Polinomio.obtener_valor(polinomio1, i) - Polinomio.obtener_valor(polinomio2, i)
+            if (total != 0):
+                Polinomio.agregar_termino(paux, i, total)
+        return paux
 
     def multiplicar(polinomio1, polinomio2):
         """Multiplica dos polinomios y devuelve el resultado"""
@@ -117,6 +127,7 @@ p.agregar_termino(4, 2) # Agrega el término 4x^2
 p2 = Polinomio()
 p2.agregar_termino(3, 2) # Agrega el término 3x^2
 p2.agregar_termino(1, 1) # Agrega el término x
+p2.agregar_termino(4, 5) # Agrega el término 5x^4
 
 print(p.mostrar()) # Muestra el polinomio en forma legible
 print(p2.mostrar()) # Muestra el polinomio en forma legible
@@ -129,3 +140,5 @@ print(p3.mostrar()) # Muestra el polinomio en forma legible
 p4 = Polinomio.multiplicar(p, p2) # Multiplica los polinomios p y p2
 print(p4.mostrar()) # Muestra el polinomio en forma legible
 
+p5 = Polinomio.restar(p2, p) # Resta los polinomios p y p2
+print(p5.mostrar()) # Muestra el polinomio en forma legible
