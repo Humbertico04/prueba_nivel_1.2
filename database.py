@@ -78,6 +78,16 @@ class Polinomio(object):
                 aux = aux.sig
             if (aux.sig is not None and aux.sig.info.termino == termino):
                 aux.sig = aux.sig.sig
+
+    def existe_termino(polinomio, termino):
+        """Determina si existe un termino en el polinomio"""
+        aux = polinomio.termino_mayor
+        while (aux is not None and aux.info.termino != termino):
+            aux = aux.sig
+        if (aux is not None and aux.info.termino == termino):
+            return True
+        else:
+            return False
         
     def mostrar(polinomio):
         """Muestra el polinomio"""
@@ -131,20 +141,19 @@ class Polinomio(object):
         return paux
 
 
-
 p = Polinomio()
-p.agregar_termino(2, -3) # Agrega el término 2x^3
-p.agregar_termino(4, 2) # Agrega el término 4x^2
+p.agregar_termino(2, -3) # Agrega el término -3x^2
+p.agregar_termino(4, 2) # Agrega el término 2x^4
 
 p2 = Polinomio()
-p2.agregar_termino(3, 2) # Agrega el término 3x^2
+p2.agregar_termino(3, 2) # Agrega el término 2x^3
 p2.agregar_termino(1, 1) # Agrega el término x
 p2.agregar_termino(4, 5) # Agrega el término 5x^4
 
 print(p.mostrar()) # Muestra el polinomio en forma legible
 print(p2.mostrar()) # Muestra el polinomio en forma legible
-print(p.obtener_valor(4)) # Devuelve el valor del término 3x^3
-print(p2.obtener_valor(3)) # Devuelve el valor del término 3x^2
+print(p.obtener_valor(4)) # Devuelve el valor del término 2x^4
+print(p2.obtener_valor(3)) # Devuelve el valor del término 2x^3
 
 p3 = Polinomio.sumar(p, p2) # Suma los polinomios p y p2
 print(p3.mostrar()) # Muestra el polinomio en forma legible
@@ -155,5 +164,7 @@ print(p4.mostrar()) # Muestra el polinomio en forma legible
 p5 = Polinomio.restar(p2, p) # Resta los polinomios p y p2
 print(p5.mostrar()) # Muestra el polinomio en forma legible
 
-p.eliminar_termino(4) # Elimina el término 4x^2
+p.eliminar_termino(4) # Elimina el término 2x^4
 print(p.mostrar()) # Muestra el polinomio en forma legible
+
+print(p2.existe_termino(4)) # Devuelve True si existe el término 2x^4
