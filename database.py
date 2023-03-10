@@ -68,6 +68,17 @@ class Polinomio(object):
         else:
             return 0
         
+    def eliminar_termino(polinomio, termino):
+        """Elimina un termino del polinomio"""
+        aux = polinomio.termino_mayor
+        if (aux is not None and aux.info.termino == termino):
+            polinomio.termino_mayor = aux.sig
+        else:
+            while (aux.sig is not None and aux.sig.info.termino != termino):
+                aux = aux.sig
+            if (aux.sig is not None and aux.sig.info.termino == termino):
+                aux.sig = aux.sig.sig
+        
     def mostrar(polinomio):
         """Muestra el polinomio"""
         aux = polinomio.termino_mayor
@@ -120,6 +131,7 @@ class Polinomio(object):
         return paux
 
 
+
 p = Polinomio()
 p.agregar_termino(2, -3) # Agrega el término 2x^3
 p.agregar_termino(4, 2) # Agrega el término 4x^2
@@ -142,3 +154,6 @@ print(p4.mostrar()) # Muestra el polinomio en forma legible
 
 p5 = Polinomio.restar(p2, p) # Resta los polinomios p y p2
 print(p5.mostrar()) # Muestra el polinomio en forma legible
+
+p.eliminar_termino(4) # Elimina el término 4x^2
+print(p.mostrar()) # Muestra el polinomio en forma legible
