@@ -3,20 +3,20 @@ class Nodo(object):
 
     info, sig = None, None
 
-aux = Nodo()
-aux.info = "Primer nodo"
-palabra = input('Ingrese una palabra: ')
-naux = aux
-while (palabra != ''):
-    nodo = Nodo()
-    nodo.info = palabra
-    naux.sig = nodo
-    naux = nodo
-    palabra = input('Ingrese una palabra: ')
+# aux = Nodo()
+# aux.info = "Primer nodo"
+# palabra = input('Ingrese una palabra: ')
+# naux = aux
+# while (palabra != ''):
+#     nodo = Nodo()
+#     nodo.info = palabra
+#     naux.sig = nodo
+#     naux = nodo
+#     palabra = input('Ingrese una palabra: ')
 
-while (aux is not None):
-    print(aux.info)
-    aux = aux.sig
+# while (aux is not None):
+#     print(aux.info)
+#     aux = aux.sig
 
 class datoPolinomio(object):
     """Clase dato polinomio"""
@@ -77,7 +77,7 @@ class Polinomio(object):
                 signo = ""
                 if aux.info.valor >= 0:
                     signo += "+"
-                pol += signo + str(aux.info.valor) + "x^", str(aux.info.termino)
+                pol += signo + str(aux.info.valor) + "x^" + str(aux.info.termino)
                 aux = aux.sig
         return pol
     
@@ -108,3 +108,24 @@ class Polinomio(object):
                 pol2 = pol2.sig
             pol1 = pol1.sig
         return paux
+
+
+p = Polinomio()
+p.agregar_termino(2, -3) # Agrega el término 2x^3
+p.agregar_termino(4, 2) # Agrega el término 4x^2
+
+p2 = Polinomio()
+p2.agregar_termino(3, 2) # Agrega el término 3x^2
+p2.agregar_termino(1, 1) # Agrega el término x
+
+print(p.mostrar()) # Muestra el polinomio en forma legible
+print(p2.mostrar()) # Muestra el polinomio en forma legible
+print(p.obtener_valor(4)) # Devuelve el valor del término 3x^3
+print(p2.obtener_valor(3)) # Devuelve el valor del término 3x^2
+
+p3 = Polinomio.sumar(p, p2) # Suma los polinomios p y p2
+print(p3.mostrar()) # Muestra el polinomio en forma legible
+
+p4 = Polinomio.multiplicar(p, p2) # Multiplica los polinomios p y p2
+print(p4.mostrar()) # Muestra el polinomio en forma legible
+
