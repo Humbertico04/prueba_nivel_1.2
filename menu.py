@@ -22,18 +22,19 @@ def iniciar():
         helpers.limpiar_pantalla()
 
         if opcion == '1':
+            print("Listando polinomios...\n")
             for i in range(contador-1):
                 print("p{} = {}".format(i+1, polinomio[f"p{i+1}"].mostrar()))
 
         elif opcion == '2':
+            print(f"Añadiendo el polinomioo p{contador}...\n")
             polinomio[f"p{contador}"] = db.Polinomio()
-            polinomio[f"p{contador}"].agregar_termino(2, -3)
-            # print(polinomio[f"p{contador}"].mostrar())
-            # print(polinomio[f"p{contador}"])
-            # polinomio = f"p{contador}"
-            # polinomio = db.Polinomio()
-            # polinomio.agregar_termino(2, -3)
-            # print(polinomio.mostrar())
+            polinomio[f"p{contador}"].agregar_termino(helpers.leer_numero(-1000, 1000, "Exponente del término: "), 
+                                                      helpers.leer_numero(-1000, 1000, "Coeficiente del término: "))
+
+
+            
+            print(f"p{contador} añadido correctamente.")
             contador += 1
 
         # elif opcion == '3':
