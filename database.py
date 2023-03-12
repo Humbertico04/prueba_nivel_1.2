@@ -167,3 +167,6 @@ p1.eliminar_termino(4) # Elimina el término 2x^4
 print(p1.mostrar()) # Muestra el polinomio en forma legible
 
 print(p2.existe_termino(4)) # Devuelve True si existe el término 2x^4
+
+p1.modificar_termino(2, 5) # Modifica el valor del término -3x^2 por 5
+print(p1.mostrar()) # Muestra el polinomio en forma legible

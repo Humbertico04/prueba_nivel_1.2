@@ -11,13 +11,17 @@ def leer_texto(longitud_min=0, longitud_max=100, mensaje=None):
         if len(texto) >= longitud_min and len(texto) <= longitud_max:
             return texto
         
-def leer_numero(min=0, max=100, mensaje=None):
+def leer_numero(min=0, max=100, mensaje=None, mensaje_error=None):
     print(mensaje) if mensaje else None
     while True:
         try:
             numero = input("> ")
             if int(numero) >= min and int(numero) <= max:
                 return int(numero)
+            else:
+                print(mensaje_error) if mensaje_error else None
+                if mensaje_error:
+                    break       
         except ValueError:
             pass
 
