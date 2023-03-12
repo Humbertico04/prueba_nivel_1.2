@@ -16,8 +16,10 @@ def iniciar():
         print("[3] Modificar término   ")
         print("[4] Añadir término      ")
         print("[5] Borrar término      ")
-        print("[6] Borrar polinomio    ")
-        print("[7] Cerrar el Gestor    ")
+        print("[6] Sumar polinomios    ")
+        print("[7] Restar polinomios   ")
+        print("[8] Multiplicar polinomios")
+        print("[9] Cerrar el Gestor    ")
         print("========================")
 
         opcion = input("> ")
@@ -102,7 +104,55 @@ def iniciar():
             else:
                 print("No existe un término con el exponente ingresado.")
 
+        elif opcion == '6':
+            print("Sumando polinomios...\n")
+            polinomio1 = helpers.leer_numero(1, contador-1, "Que polinomio desea sumar? (Introduzca solo el número del polinomio 1, 2, 3, etc.):",
+                                                mensaje_error="No existe un polinomio con el número ingresado.\n")
+            if polinomio1 == None:
+                input("Presiona ENTER para continuar...")
+                continue
+            helpers.limpiar_pantalla()
+            polinomios2 = helpers.leer_numero(1, contador-1, "Que polinomio desea sumar? (Introduzca solo el número del polinomio 1, 2, 3, etc.):",
+                                                mensaje_error="No existe un polinomio con el número ingresado.\n")
+            if polinomios2 == None:
+                input("Presiona ENTER para continuar...")
+                continue
+            helpers.limpiar_pantalla()
+            print(f"p{polinomio1} + p{polinomios2} = {polinomio[f'p{polinomio1}'].sumar(polinomio[f'p{polinomios2}']).mostrar()}")
+
         elif opcion == '7':
+            print("Restando polinomios...\n")
+            polinomio1 = helpers.leer_numero(1, contador-1, "Que polinomio desea restar? (Introduzca solo el número del polinomio 1, 2, 3, etc.):",
+                                                mensaje_error="No existe un polinomio con el número ingresado.\n")
+            if polinomio1 == None:
+                input("Presiona ENTER para continuar...")
+                continue
+            helpers.limpiar_pantalla()
+            polinomios2 = helpers.leer_numero(1, contador-1, "Que polinomio desea restar? (Introduzca solo el número del polinomio 1, 2, 3, etc.):",
+                                                mensaje_error="No existe un polinomio con el número ingresado.\n")
+            if polinomios2 == None:
+                input("Presiona ENTER para continuar...")
+                continue
+            helpers.limpiar_pantalla()
+            print(f"p{polinomio1} - p{polinomios2} = {polinomio[f'p{polinomio1}'].restar(polinomio[f'p{polinomios2}']).mostrar()}")
+
+        elif opcion == '8':
+            print("Multiplicando polinomios...\n")
+            polinomio1 = helpers.leer_numero(1, contador-1, "Que polinomio desea multiplicar? (Introduzca solo el número del polinomio 1, 2, 3, etc.):",
+                                                mensaje_error="No existe un polinomio con el número ingresado.\n")
+            if polinomio1 == None:
+                input("Presiona ENTER para continuar...")
+                continue
+            helpers.limpiar_pantalla()
+            polinomios2 = helpers.leer_numero(1, contador-1, "Que polinomio desea multiplicar? (Introduzca solo el número del polinomio 1, 2, 3, etc.):",
+                                                mensaje_error="No existe un polinomio con el número ingresado.\n")
+            if polinomios2 == None:
+                input("Presiona ENTER para continuar...")
+                continue
+            helpers.limpiar_pantalla()
+            print(f"p{polinomio1} * p{polinomios2} = {polinomio[f'p{polinomio1}'].multiplicar(polinomio[f'p{polinomios2}']).mostrar()}")
+
+        elif opcion == '9':
             print("Saliendo...\n")
             break
 
