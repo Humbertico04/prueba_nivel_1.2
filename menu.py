@@ -27,12 +27,22 @@ def iniciar():
                 print("p{} = {}".format(i+1, polinomio[f"p{i+1}"].mostrar()))
 
         elif opcion == '2':
-            print(f"Añadiendo el polinomioo p{contador}...\n")
+            print(f"Añadiendo el polinomio p{contador}...\n")
             polinomio[f"p{contador}"] = db.Polinomio()
-            polinomio[f"p{contador}"].agregar_termino(helpers.leer_numero(-1000, 1000, "Exponente del término: "), 
+            polinomio[f"p{contador}"].agregar_termino(helpers.leer_numero(0, 1000, "Exponente del término: "), 
                                                       helpers.leer_numero(-1000, 1000, "Coeficiente del término: "))
-
-
+            helpers.limpiar_pantalla()
+            while True:
+                if helpers.pedir_entrada_si_o_no(mensaje="Desea añadir otro término al polinomioo p{}?".format(contador)) == False:
+                    break
+                else:
+                    exp = helpers.leer_numero(0, 1000, "Exponente del término: ")
+                    if polinomio[f"p{contador}"].existe_termino(exp) == True:
+                        helpers.limpiar_pantalla()
+                        print("Ya existe un término con el exponente ingresado.\n")
+                    else:
+                        polinomio[f"p{contador}"].agregar_termino(exp, helpers.leer_numero(-1000, 1000, "Coeficiente del término: "))
+                        helpers.limpiar_pantalla()
             
             print(f"p{contador} añadido correctamente.")
             contador += 1
