@@ -140,7 +140,6 @@ class Polinomio(object):
             pol1 = pol1.sig
         return paux
 
-
 p1 = Polinomio()
 p1.agregar_termino(2, -3) # Agrega el término -3x^2
 p1.agregar_termino(4, 2) # Agrega el término 2x^4
